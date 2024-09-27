@@ -1,0 +1,29 @@
+name: 'nestjs-test-task'
+
+services:
+  postgres:
+    image: postgres:17.0-alpine3.20
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: nest_user
+      POSTGRES_PASSWORD: nest_password
+      POSTGRES_DB: nest_db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.4.0-alpine3.20
+    container_name: redis
+    restart: always
+    command: redis-server --save 20 1 --loglevel warning --requirepass test
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
