@@ -2,6 +2,8 @@
 
 ## Project setup
 
+Copy `.env.example` to `.env` and fill in the values.
+
 ```bash
 $ pnpm install
 $ docker compose up -d
